@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Builds an up to date version of 'pryv-base', image layer that sits below 
+# all of pryv's docker images. 
+
+version="1.0.0"
+
+pushd base
+sudo docker build -f Dockerfile -t pryv-base:$version .
+popd

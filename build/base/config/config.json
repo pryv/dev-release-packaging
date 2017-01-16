@@ -1,0 +1,17 @@
+{
+  "http": {
+    "port": "9000", 
+    "certsPathAndKey": false
+  },
+  "http2": {
+    "certsPathAndKey": false
+  },
+  "browserBootstrap": {
+    "fields": {
+      "browser-source": "https://l.rec.la:2443/browser"
+    }
+  },
+  "redirect": {
+    "port": "0"
+  }
+}
