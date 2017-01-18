@@ -1,0 +1,36 @@
+
+version: '2'
+services:
+  nginx: 
+    image: "pryv/nginx"
+    ports: 
+      - "80:8080"
+      - "443:8443"
+    links: 
+      - reg
+      - auth
+    volumes: 
+      - /logs:/var/pryv/nginx/logs
+  
+  reg: 
+    image: "pryv/reg"
+    ports:
+      - "53:5353/udp"
+    links:
+      - redis
+    volumes: 
+      - /logs:/var/pryv/reg/logs
+      
+  auth: 
+    image: "pryv/auth"
+    links:
+      - redis
+    volumes: 
+      - /logs:/var/pryv/auth/logs
+  
+  redis: 
+    image: "pryv/redis"
+    volumes: 
+      - /data:/var/pryv/data/redis
+      - /logs:/var/pryv/redis/logs
+      
