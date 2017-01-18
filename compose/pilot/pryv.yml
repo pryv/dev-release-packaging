@@ -1,0 +1,63 @@
+
+version: '2'
+services:
+  nginx: 
+    image: "pryv/nginx"
+    links: 
+      - reg
+      - auth
+      - core
+      - preview
+      - static
+    volumes: 
+      - /logs:/var/pryv/nginx/logs
+  
+  reg: 
+    image: "pryv/reg"
+    ports:
+      - "53:5353/udp"
+    links:
+      - redis
+    volumes: 
+      - /logs:/var/pryv/reg/logs
+      
+  auth: 
+    image: "pryv/auth"
+    links:
+      - redis
+    volumes: 
+      - /logs:/var/pryv/auth/logs
+  
+  redis: 
+    image: "pryv/redis"
+    volumes: 
+      - /data:/var/pryv/data/redis
+      - /logs:/var/pryv/redis/logs
+      
+  core: 
+    image: "pryv/core"
+    links: 
+      - mongodb
+    volumes: 
+      - /attachments:/var/pryv/data/attachments
+      - /logs:/var/pryv/core/logs
+      
+  preview: 
+    image: "pryv/preview"
+    links: 
+      - mongodb
+    volumes: 
+      - /attachments:/var/pryv/data/attachments
+      - /previews:/var/pryv/data/previews
+      - /logs:/var/pryv/preview/logs
+      
+  mongodb: 
+    image: "pryv/mongodb"
+    volumes: 
+      - /data:/var/pryv/data/mongo
+      - /logs:/var/pryv/mongo/logs
+  
+  static: 
+    image: "pryv/static"
+    volumes: 
+      - /logs:/var/pryv/static/logs
