@@ -6,8 +6,9 @@ run /pd_build/enable_repos.sh
 run /pd_build/prepare.sh
 run /pd_build/utilities.sh
 
-# Install node
+# Install various things that are used by most of the Pryv images:
 run /pd_build/nodejs.sh
+run /pd_build/python.sh
 
 # (Pre-)Configure the image
 run /pd_build/configure.sh
