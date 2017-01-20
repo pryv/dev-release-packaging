@@ -1,0 +1,6 @@
+
+Here's an inventory of the subdirectories: 
+
+* `base/`: Build files for pryv/base. 
+* `template/`: An empty structure for new images based on pryv/base. 
+
