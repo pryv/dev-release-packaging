@@ -5,7 +5,7 @@ ADD . /pd_build
 RUN /pd_build/install.sh
 
 # Ports: (par exemple)
-#   9000        main api server
+#   27017        mongodb port
 #
-# EXPOSE 9000
+EXPOSE 27017
 

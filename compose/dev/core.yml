@@ -1,0 +1,13 @@
+
+version: '2'
+services:
+  core: 
+    image: "pryv/core"
+    links: 
+      - mongodb
+    ports: 
+      - "9000:9000"
+      
+  mongodb: 
+    image: "pryv/mongodb"
+    
