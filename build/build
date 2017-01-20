@@ -9,4 +9,10 @@ version="1.0.0"
 
 pushd base
 sudo docker build -f Dockerfile -t pryv/base:$version .
+sudo docker tag pryv/base:$version pryv/base:latest
+popd
+
+pushd mongodb
+sudo docker build -f Dockerfile -t pryv/mongodb:$version .
+sudo docker tag pryv/mongodb:$version pryv/mongodb:latest
 popd
