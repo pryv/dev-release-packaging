@@ -7,12 +7,20 @@ set -e
 
 version="1.0.0"
 
+echo "---------------------------- building base -------------------------------"
 pushd base
 sudo docker build -f Dockerfile -t pryv/base:$version .
 sudo docker tag pryv/base:$version pryv/base:latest
 popd
 
+echo "---------------------------- building mongodb ----------------------------"
 pushd mongodb
 sudo docker build -f Dockerfile -t pryv/mongodb:$version .
 sudo docker tag pryv/mongodb:$version pryv/mongodb:latest
+popd
+
+echo "---------------------------- building redis ------------------------------"
+pushd redis
+sudo docker build -f Dockerfile -t pryv/redis:$version .
+sudo docker tag pryv/redis:$version pryv/redis:latest
 popd
