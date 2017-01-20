@@ -1,13 +1,20 @@
 
-version: '2'
+version: '2.1'
 services:
   core: 
     image: "pryv/core"
+    networks: 
+      - internal
     links: 
-      - mongodb
+      - mongodb:mongodb
     ports: 
       - "9000:9000"
       
   mongodb: 
     image: "pryv/mongodb"
+    networks: 
+      - internal
     
+networks:
+  internal:
+    driver: bridge
