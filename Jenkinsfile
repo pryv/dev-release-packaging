@@ -4,7 +4,7 @@ node("docker") {
   def commit_id = readFile('.git/commit-id').trim()
   println commit_id
 
-  stage "build"
-  def app = docker.build "your-project-name"
-  sh "cd build && ./build"
+  stage "build" {
+    sh "cd build && ./build"
+  }
 }
