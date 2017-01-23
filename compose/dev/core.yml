@@ -6,9 +6,18 @@ services:
     networks: 
       - internal
     links: 
-      - mongodb:mongodb
+      - mongodb
     ports: 
       - "9000:9000"
+      
+  preview: 
+    image: "pryv/preview"
+    networks: 
+      - internal
+    links: 
+      - mongodb
+    ports: 
+      - "9010:9000"
       
   mongodb: 
     image: "pryv/mongodb"
