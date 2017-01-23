@@ -1,29 +1,39 @@
 
 version: '2.1'
 services:
+  nginx: 
+    image: "pryv/nginx"
+    networks: 
+      - frontend
+    ports: 
+      - "80:443"
+    links: 
+      - core
+      - preview
+  
   core: 
     image: "pryv/core"
     networks: 
-      - internal
+      - frontend
+      - backend
     links: 
       - mongodb
-    ports: 
-      - "9000:9000"
-      
+    
   preview: 
     image: "pryv/preview"
     networks: 
-      - internal
+      - frontend
+      - backend
     links: 
       - mongodb
-    ports: 
-      - "9010:9000"
       
   mongodb: 
     image: "pryv/mongodb"
     networks: 
-      - internal
+      - backend
     
 networks:
-  internal:
+  frontend:
+    driver: bridge
+  backend:
     driver: bridge
