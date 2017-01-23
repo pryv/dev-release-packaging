@@ -5,6 +5,6 @@ node("docker") {
   println commit_id
 
   stage("build") {
-    sh "cd build && source ./build"
+    sh "cd build && ./build"
   }
 }
