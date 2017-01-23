@@ -24,3 +24,9 @@ pushd redis
 sudo docker build -f Dockerfile -t pryv/redis:$version .
 sudo docker tag pryv/redis:$version pryv/redis:latest
 popd
+
+echo "---------------------------- building nginx ------------------------------"
+pushd nginx
+sudo docker build -f Dockerfile -t pryv/nginx:$version .
+sudo docker tag pryv/nginx:$version pryv/nginx:latest
+popd
