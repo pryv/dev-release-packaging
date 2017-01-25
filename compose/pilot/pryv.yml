@@ -11,6 +11,30 @@ services:
       - core
       - preview
       - static
+      - register
+      
+  register: 
+    image: "pryv/register"
+    networks: 
+      - frontend
+      - backend
+    links: 
+      - redis
+      
+  dns: 
+    image: "pryv/dns"
+    ports: 
+      - "53:5353/udp"
+    networks: 
+      - frontend
+      - backend
+    links: 
+      - redis
+      
+  redis: 
+    image: "pryv/redis"
+    networks: 
+      - backend
       
   static: 
     image: "pryv/static"
