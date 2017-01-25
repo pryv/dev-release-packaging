@@ -4,7 +4,7 @@ source /pd_build/buildconfig
 
 header "(Pre-)Configuring nginx."
 
-logs_dir="/app/log/nginx"
+logs_dir="/app/log"
 conf_dir="/app/conf"
 
 # Create relevant directories.
@@ -14,6 +14,9 @@ run mkdir -p $conf_dir
 # Copy configuration template
 run cp /pd_build/conf/nginx.conf /app/conf/
 run cp /pd_build/conf/site.conf /app/conf/
+
+# Copy rec.la keys for Pilot configuration variant
+run cp -r /pd_build/conf/secret /app/conf/
 
 # And delegate configuration to our default templates below /app/conf
 run cp /pd_build/conf/delegate.conf /etc/nginx/nginx.conf
