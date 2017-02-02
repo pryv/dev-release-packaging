@@ -7,6 +7,7 @@
 #   * What tag should we assign this build? -> creates `build_tag`, containing 
 #     the docker tag we should assign to this build. 
 
+from operator import contains
 import re
 import subprocess
 import os
@@ -38,7 +39,9 @@ print(git_branch)
 clean_files()
 
 # Might this be a release branch/tag? If so, touch the file `release_build`
-if re.match('^\d{1,}\.\d{1,}\.\d{1,}$', git_describe) and git_branch == 'master':
+possible_release_branch = contains(['master', 'HEAD'], git_branch)
+
+if re.match('^\d{1,}\.\d{1,}\.\d{1,}$', git_describe) and possible_release_branch:
     write('release_build', '')
     write('build_tag', git_describe)
 else: 
