@@ -5,28 +5,39 @@ set -e
 # Builds an up to date version of 'pryv/base', image layer that sits below 
 # all of pryv's docker images. 
 
-version=$(git describe --tags)
+# Determine the build_tag and whether we need to release.
+scripts/build_name
+
+version=$(cat build_tag)
 
 echo "---------------------------- building base -------------------------------"
 pushd base
 sudo docker build -f Dockerfile -t pryv/base:$version .
-sudo docker tag pryv/base:$version pryv/base:latest
+if [ -e release_build ]; then
+  sudo docker tag pryv/base:$version pryv/base:latest
+fi
 popd
 
 echo "---------------------------- building mongodb ----------------------------"
 pushd mongodb
 sudo docker build -f Dockerfile -t pryv/mongodb:$version .
-sudo docker tag pryv/mongodb:$version pryv/mongodb:latest
+if [ -e release_build ]; then
+  sudo docker tag pryv/mongodb:$version pryv/mongodb:latest
+fi
 popd
 
 echo "---------------------------- building redis ------------------------------"
 pushd redis
 sudo docker build -f Dockerfile -t pryv/redis:$version .
-sudo docker tag pryv/redis:$version pryv/redis:latest
+if [ -e release_build ]; then
+  sudo docker tag pryv/redis:$version pryv/redis:latest
+fi
 popd
 
 echo "---------------------------- building nginx ------------------------------"
 pushd nginx
 sudo docker build -f Dockerfile -t pryv/nginx:$version .
-sudo docker tag pryv/nginx:$version pryv/nginx:latest
+if [ -e release_build ]; then
+  sudo docker tag pryv/nginx:$version pryv/nginx:latest
+fi
 popd
