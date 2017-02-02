@@ -17,7 +17,6 @@ echo "---------------------------- building base -------------------------------
 pushd base
 sudo docker build -f Dockerfile -t pryv/base:$version .
 if [ -e ../release_build ]; then
-  echo "pryv/base is now at $version"
   sudo docker tag pryv/base:$version pryv/base:latest
 fi
 popd
