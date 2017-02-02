@@ -13,34 +13,42 @@ if [ -e release_build ]; then
   echo "This is a release build, it will update 'latest' tags."
 fi
 
+function release {
+  local service_name=$1
+  local version=$2
+  
+  if [ -e ../release_build ]; then
+    sudo docker tag $service_name:$version $service_name:latest
+
+    # Publication to registry:
+    sudo docker tag $service_name:$version localhost:5000/$service_name:$version
+    sudo docker tag $service_name:$version localhost:5000/$service_name:latest
+    
+    sudo docker push localhost:5000/$service_name:$version
+    sudo docker push localhost:5000/$service_name:latest
+  fi
+}
+
 echo "---------------------------- building base -------------------------------"
 pushd base
 sudo docker build -f Dockerfile -t pryv/base:$version .
-if [ -e ../release_build ]; then
-  sudo docker tag pryv/base:$version pryv/base:latest
-fi
+release "pryv/base" $version
 popd
 
 echo "---------------------------- building mongodb ----------------------------"
 pushd mongodb
 sudo docker build -f Dockerfile -t pryv/mongodb:$version .
-if [ -e ../release_build ]; then
-  sudo docker tag pryv/mongodb:$version pryv/mongodb:latest
-fi
+release "pryv/mongodb" $version
 popd
 
 echo "---------------------------- building redis ------------------------------"
 pushd redis
 sudo docker build -f Dockerfile -t pryv/redis:$version .
-if [ -e ../release_build ]; then
-  sudo docker tag pryv/redis:$version pryv/redis:latest
-fi
+release "pryv/redis" $version
 popd
 
 echo "---------------------------- building nginx ------------------------------"
 pushd nginx
 sudo docker build -f Dockerfile -t pryv/nginx:$version .
-if [ -e ../release_build ]; then
-  sudo docker tag pryv/nginx:$version pryv/nginx:latest
-fi
+release "pryv/nginx" $version
 popd
