@@ -2,7 +2,7 @@
 version: '2.1'
 services:
   nginx: 
-    image: "pryv/nginx"
+    image: "pryv/nginx:1.0.4-1-g75b11f9"
     networks: 
       - frontend
     ports: 
@@ -14,7 +14,7 @@ services:
       - register
       
   register: 
-    image: "pryv/register"
+    image: "pryv/register:v0.1.9-31-gd4d911c"
     networks: 
       - frontend
       - backend
@@ -22,7 +22,7 @@ services:
       - redis
       
   dns: 
-    image: "pryv/dns"
+    image: "pryv/dns:v0.1.9-31-gd4d911c"
     ports: 
       - "53:5353/udp"
     networks: 
@@ -37,7 +37,7 @@ services:
       - backend
       
   static: 
-    image: "pryv/static"
+    image: "pryv/static:0.1.1-389-g84a7a70"
     networks: 
       - frontend
   
