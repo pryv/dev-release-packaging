@@ -7,6 +7,8 @@ services:
       - frontend
     ports: 
       - "443:443"
+    volumes: 
+      - /home/kschiess/pilot/nginx/conf/:/app/conf/
     links: 
       - core
       - preview
@@ -40,11 +42,13 @@ services:
       
   static: 
     image: "pryv/static:0.1.1-393-g850feb9"
+    volumes: 
+      - /home/kschiess/pilot/static/conf/:/app/conf/
     networks: 
       - frontend
   
   core: 
-    image: "pryv/core"
+    image: "pryv/core:1.1.3-19-gdb9e9f4"
     networks: 
       - frontend
       - backend
@@ -54,7 +58,7 @@ services:
       - mongodb
     
   preview: 
-    image: "pryv/preview"
+    image: "pryv/preview:1.1.3-19-gdb9e9f4"
     networks: 
       - frontend
       - backend
