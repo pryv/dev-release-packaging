@@ -2,35 +2,45 @@
 version: '2.1'
 services:
   nginx: 
-    image: "pryv/nginx"
+    image: "pryvsa-docker-release.bintray.io/pryv/nginx:1.2.0"
+    networks: 
+      - frontend
     ports: 
-      - "80:8080"
-      - "443:8443"
-    links: 
-      - reg
-      - auth
+      - "443:443"
     volumes: 
-      - /logs:/var/pryv/nginx/logs
+      - ${PRYV_CONF_ROOT}/nginx/conf/:/app/conf/
+      - ${PRYV_CONF_ROOT}/nginx/log/:/app/log/
+    links: 
+      - register
   
-  reg: 
-    image: "pryv/reg"
+  dns: 
+    image: "pryvsa-docker-release.bintray.io/pryv/dns:v0.1.9-140-g841b420"
     ports:
       - "53:5353/udp"
+    networks: 
+      - frontend
+      - backend
+    volumes: 
+      - ${PRYV_CONF_ROOT}/dns/conf/:/app/conf/
+      - ${PRYV_CONF_ROOT}/dns/log/:/app/log/
     links:
       - redis
+          
+  register: 
+    image: "pryvsa-docker-release.bintray.io/pryv/register:v0.1.9-140-g841b420"
+    networks: 
+      - frontend
+      - backend
     volumes: 
-      - /logs:/var/pryv/reg/logs
-      
-  auth: 
-    image: "pryv/auth"
+      - ${PRYV_CONF_ROOT}/register/conf/:/app/conf/
+      - ${PRYV_CONF_ROOT}/register/log/:/app/log/
     links:
       - redis
-    volumes: 
-      - /logs:/var/pryv/auth/logs
-  
+
   redis: 
-    image: "pryv/redis"
+    image: "pryvsa-docker-release.bintray.io/pryv/redis:1.2.0"
+    networks: 
+      - backend
     volumes: 
-      - /data:/var/pryv/data/redis
-      - /logs:/var/pryv/redis/logs
-      
+      - ${PRYV_CONF_ROOT}/redis/data/:/app/data/
+      - ${PRYV_CONF_ROOT}/redis/log/:/app/log/
