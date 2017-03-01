@@ -1,0 +1,20 @@
+version: '2.1'
+services:
+  nginx: 
+    image: "pryv/nginx:1.2.0"
+    networks: 
+      - frontend
+    ports: 
+      - "443:443"
+    volumes: 
+      - ${PRYV_CONF_ROOT}/nginx/conf/:/app/conf/
+      - ${PRYV_CONF_ROOT}/nginx/log/:/app/log/
+    links: 
+      - static
+
+  static: 
+    image: "pryv/static:0.1.1-474-g1ea6f18"
+    volumes: 
+      - ${PRYV_CONF_ROOT}/static/conf/:/app/conf/
+    networks: 
+      - frontend
