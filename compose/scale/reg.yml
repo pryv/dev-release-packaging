@@ -44,3 +44,9 @@ services:
     volumes: 
       - ${PRYV_CONF_ROOT}/redis/data/:/app/data/
       - ${PRYV_CONF_ROOT}/redis/log/:/app/log/
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

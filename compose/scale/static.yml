@@ -18,3 +18,9 @@ services:
       - ${PRYV_CONF_ROOT}/static/conf/:/app/conf/
     networks: 
       - frontend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
