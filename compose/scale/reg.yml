@@ -38,7 +38,7 @@ services:
       - redis
 
   redis: 
-    image: "pryvsa-docker-release.bintray.io/pryv/redis:1.2.0"
+    image: "pryvsa-docker-release.bintray.io/pryv/redis:1.2.0-13-g1e12013"
     networks: 
       - backend
     volumes: 

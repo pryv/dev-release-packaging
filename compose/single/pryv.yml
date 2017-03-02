@@ -37,7 +37,7 @@ services:
       - redis
       
   redis: 
-    image: "pryv/redis"
+    image: "pryv/redis:1.2.0-13-g1e12013"
     networks: 
       - backend
       
