@@ -5,5 +5,5 @@
 # Configuration and data files are all below this root.
 export PRYV_CONF_ROOT=$PWD/reg
 
-echo "Running Pryv/static component."
+echo "Running Pryv/registry component."
 exec docker-compose -f reg.yml up

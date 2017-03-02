@@ -17,7 +17,7 @@ services:
       - register
       
   register: 
-    image: "pryv/register:v0.1.9-37-gb627cb5"
+    image: "pryv/register:v0.1.9-147-g0c0cd4c"
     networks: 
       - frontend
       - backend
@@ -27,7 +27,7 @@ services:
       - redis
       
   dns: 
-    image: "pryv/dns:v0.1.9-37-gb627cb5"
+    image: "pryv/dns:v0.1.9-147-g0c0cd4c"
     ports: 
       - "53:5353/udp"
     networks: 
@@ -42,14 +42,14 @@ services:
       - backend
       
   static: 
-    image: "pryv/static:0.1.1-393-g850feb9"
+    image: "pryv/static:0.1.1-474-g1ea6f18"
     volumes: 
       - /home/kschiess/pilot/static/conf/:/app/conf/
     networks: 
       - frontend
   
   core: 
-    image: "pryv/core:1.1.6-17-ge89d2b3"
+    image: "pryv/core:1.1.6-40-gdcddb54"
     networks: 
       - frontend
       - backend
@@ -60,7 +60,7 @@ services:
       - mongodb
     
   preview: 
-    image: "pryv/preview:1.1.6-18-gd704d6a"
+    image: "pryv/preview:1.1.6-40-gdcddb54"
     networks: 
       - frontend
       - backend
