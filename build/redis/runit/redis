@@ -2,8 +2,18 @@
 
 set -e
 
+data_dir="/app/data"
+log_dir="/app/log"
+conf_dir="/app/conf"
+
+# Create redis data directory
+mkdir -p $data_dir
+chown redis:redis $data_dir
+
+# Make sure we can access our log file.
 logfile="/app/log/redis.log"
 touch $logfile && chown redis $logfile
+chown redis $log_dir
 
 cd /app/data/
 exec chpst -u redis /usr/local/bin/redis-server /app/conf/redis.conf
