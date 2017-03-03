@@ -2,5 +2,16 @@
 
 set -e
 
+target_dir="/app/bin"
+data_dir="/app/data"
+log_dir="/app/log"
+config_dir="/app/conf"
+
+# Make sure that mongodb can write data.
+chown -R mongodb:mongodb $data_dir
+
+# And the log file
+touch $log_dir/mongodb.log && chown -R mongodb:mongodb $log_dir
+
 cd /app/bin/mongodb
 exec chpst -u mongodb bin/mongod -f /app/conf/mongodb.conf
