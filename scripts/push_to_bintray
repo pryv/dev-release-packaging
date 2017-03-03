@@ -17,5 +17,5 @@ host='pryvsa-docker-release.bintray.io'
 local_name="$image_name:$image_version"
 remote_name="$host/$image_name:$image_version"
 
-docker tag $local_name $remote_name
-docker push $remote_name
+sudo docker tag $local_name $remote_name
+sudo docker push $remote_name

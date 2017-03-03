@@ -40,7 +40,7 @@ services:
       - mongodb
 
   mongodb: 
-    image: "pryvsa-docker-release.bintray.io/pryv/mongodb:1.2.0"
+    image: "pryvsa-docker-release.bintray.io/pryv/mongodb:1.2.0-21-g67808ca"
     networks: 
       - backend
     volumes: 
