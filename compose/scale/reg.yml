@@ -14,7 +14,7 @@ services:
       - register
   
   dns: 
-    image: "pryvsa-docker-release.bintray.io/pryv/dns:v0.1.9-147-g0c0cd4c"
+    image: "pryvsa-docker-release.bintray.io/pryv/dns:v0.1.9-152-g173a5ba"
     ports:
       - "53:5353/udp"
     networks: 
@@ -27,7 +27,7 @@ services:
       - redis
           
   register: 
-    image: "pryvsa-docker-release.bintray.io/pryv/register:v0.1.9-147-g0c0cd4c"
+    image: "pryvsa-docker-release.bintray.io/pryv/register:v0.1.9-152-g173a5ba"
     networks: 
       - frontend
       - backend
