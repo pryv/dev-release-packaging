@@ -15,7 +15,7 @@ services:
       - preview
 
   core: 
-    image: "pryvsa-docker-release.bintray.io/pryv/core:1.1.6-40-gdcddb54"
+    image: "pryvsa-docker-release.bintray.io/pryv/core:1.2.0"
     networks: 
       - frontend
       - backend
@@ -27,7 +27,7 @@ services:
       - mongodb
     
   preview: 
-    image: "pryvsa-docker-release.bintray.io/pryv/preview:1.1.6-40-gdcddb54"
+    image: "pryvsa-docker-release.bintray.io/pryv/preview:1.2.0"
     networks: 
       - frontend
       - backend
@@ -40,7 +40,7 @@ services:
       - mongodb
 
   mongodb: 
-    image: "pryvsa-docker-release.bintray.io/pryv/mongodb:1.2.0-21-g67808ca"
+    image: "pryvsa-docker-release.bintray.io/pryv/mongodb:1.2.0"
     networks: 
       - backend
     volumes: 

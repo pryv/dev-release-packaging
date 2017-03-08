@@ -13,7 +13,7 @@ services:
       - static
 
   static: 
-    image: "pryvsa-docker-release.bintray.io/pryv/static:0.1.1-474-g1ea6f18"
+    image: "pryvsa-docker-release.bintray.io/pryv/static:1.2.0"
     volumes: 
       - ${PRYV_CONF_ROOT}/static/conf/:/app/conf/
     networks: 
