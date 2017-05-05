@@ -11,9 +11,9 @@ log_dir="/app/log"
 conf_dir="/app/conf"
 
 # What redis is installed?
-redis_version="2.4.16"
+redis_version="2.4.18"
 redis_file="redis-$redis_version.tar.gz"
-redis_release_sha256="d35cc89d73aa1ff05af5f1380a4411c828979b3b446f5caf8b5720225b38e15b"
+redis_release_sha256="d71b6372f42fcbdc77a9601f1dd6a029ed57f7f77ac3b18bfed8670fb8c74697"
 
 # NOTE This would be correct for newer versions of redis (> 2.6), but redis
 #   doesn't  offer 2.4.16 for dl anymore.
