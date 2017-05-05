@@ -1,6 +1,6 @@
 
 # See http://phusion.github.io/baseimage-docker/
-FROM phusion/baseimage:0.9.19
+FROM phusion/baseimage:0.9.21
 MAINTAINER "Tech@Pryv" <tech@pryv.com>
 
 # NOTE Some details of the package construction below are copied verbatim from 
