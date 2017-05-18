@@ -3,10 +3,10 @@ set -e
 source /pd_build/buildconfig
 
 # Versions and urls/paths
-mongo_version="2.6.12"
+mongo_version="3.4.4"
 mongo_tar_gz="mongodb-linux-x86_64-$mongo_version.tgz"
 mongo_url="http://downloads.mongodb.org/linux/$mongo_tar_gz"
-mongo_sha256="6d6415ac068825d1aed23f9482080ce3551bfac828d9570be1d72990d5f441b0"
+mongo_sha256="fdf4404e82d024250ce35f84481a3aeac37fc86e2a2beb3ef463146cf50c5013"
 
 target_dir="/app/bin"
 data_dir="/app/data"
