@@ -10,7 +10,7 @@ version=x64
 targz="node-${nodeversion}-linux-${version}.tar.gz"
 binary_url="http://nodejs.org/dist/${nodeversion}/${targz}"
 local_file="/var/spool/${targz}"
-shasum="d41dc375ea7e33fadf0fb1bf89d9dfd222a2fb85633fba3d2cf48ac03522ba71"
+shasum="1a526c56fb0fe0f4e91892874d89be2c8920a9d51eb6ed8bd68f66162b7a6b9e"
 
 cd /var/spool
 
