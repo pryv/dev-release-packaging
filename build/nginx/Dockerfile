@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM nginx:1.13.3
 MAINTAINER "Tech@Pryv" <tech@pryv.com>
 
 ADD . /pd_build
