@@ -15,4 +15,8 @@ git checkout v20170914
 header "Installing ruby 2.4.0"
 run bin/ruby-build 2.4.0 /usr/local/
 
+header "Installing tools"
+run gem install bundler
 
+header "Cleanup"
+rm -r /srv/ruby-build
