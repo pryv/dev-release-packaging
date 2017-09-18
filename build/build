@@ -51,3 +51,9 @@ pushd nginx
 sudo docker build -f Dockerfile -t pryv/nginx:$version .
 release "pryv/nginx" $version
 popd
+
+echo "---------------------------- building ruby ------------------------------"
+pushd base_ruby
+sudo docker build -f Dockerfile -t pryv/base_ruby:$version .
+release "pryv/base_ruby" $version
+popd
