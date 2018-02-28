@@ -1,6 +1,9 @@
 
 # See http://phusion.github.io/baseimage-docker/
 FROM phusion/baseimage:0.9.22
+ENV DISABLE_SSH=1 \
+    DISABLE_CRON=1
+
 MAINTAINER "Tech@Pryv" <tech@pryv.com>
 
 # NOTE Some details of the package construction below are copied verbatim from 
