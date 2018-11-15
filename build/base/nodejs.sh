@@ -5,12 +5,12 @@ source /pd_build/buildconfig
 header "NodeJs installation."
 
 ## Install Node.js
-nodeversion=v8.8.1
+nodeversion=v8.12.0
 version=x64
 targz="node-${nodeversion}-linux-${version}.tar.gz"
 binary_url="http://nodejs.org/dist/${nodeversion}/${targz}"
 local_file="/var/spool/${targz}"
-shasum="df83beb05af3e7aee4d16b74dd6d05967f47ee4ab6d6789ca0ed7f2b22c22c92"
+shasum="3df19b748ee2b6dfe3a03448ebc6186a3a86aeab557018d77a0f7f3314594ef6"
 
 cd /var/spool
 
