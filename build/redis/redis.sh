@@ -11,15 +11,10 @@ log_dir="/app/log"
 conf_dir="/app/conf"
 
 # What redis is installed?
-redis_version="2.4.18"
+redis_version="5.0.2"
 redis_file="redis-$redis_version.tar.gz"
-redis_release_sha256="d71b6372f42fcbdc77a9601f1dd6a029ed57f7f77ac3b18bfed8670fb8c74697"
-
-# NOTE This would be correct for newer versions of redis (> 2.6), but redis
-#   doesn't  offer 2.4.16 for dl anymore.
-# redis_url="http://download.redis.io/releases/$redis_file"
-
-redis_url="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/redis/$redis_file"
+redis_release_sha256="937dde6164001c083e87316aa20dad2f8542af089dfcb1cbb64f9c8300cd00ed"
+redis_url="http://download.redis.io/releases/$redis_file"
 
 # Redis user and group
 run groupadd -r redis 
