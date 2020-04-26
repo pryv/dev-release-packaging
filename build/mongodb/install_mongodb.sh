@@ -3,10 +3,8 @@ set -e
 source /pd_build/buildconfig
 
 # Versions and urls/paths
-mongo_version="3.4.4"
-mongo_tar_gz="mongodb-linux-x86_64-$mongo_version.tgz"
-mongo_url="http://downloads.mongodb.org/linux/$mongo_tar_gz"
-mongo_sha256="fdf4404e82d024250ce35f84481a3aeac37fc86e2a2beb3ef463146cf50c5013"
+mongo_tar_gz="mongodb-linux-x86_64-3.6.17.tgz"
+mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.17.tgz"
 
 target_dir="/app/bin"
 data_dir="/app/data"
@@ -21,10 +19,9 @@ mkdir -p $target_dir
 run groupadd -r mongodb 
 run useradd -r -g mongodb mongodb
 
-# Download, check and unpack mongodb
+# Download and unpack mongodb
 pushd $target_dir
 run curl -O $mongo_url
-echo -n "$mongo_sha256 $mongo_tar_gz" | sha256sum -c -
 
 mkdir mongodb
 pushd $target_dir/mongodb
