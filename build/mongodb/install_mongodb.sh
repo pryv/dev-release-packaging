@@ -3,8 +3,10 @@ set -e
 source /pd_build/buildconfig
 
 # Versions and urls/paths
-mongo_tar_gz="mongodb-linux-x86_64-3.6.17.tgz"
-mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.17.tgz"
+#mongo_tar_gz="mongodb-linux-x86_64-ubuntu1604-4.0.20.tgz"
+mongo_tar_gz="mongodb-linux-x86_64-ubuntu1604-4.2.9.tgz"
+#mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-4.0.20.tgz"
+mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-4.2.9.tgz"
 
 target_dir="/app/bin"
 data_dir="/app/data"
