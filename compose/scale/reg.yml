@@ -2,7 +2,7 @@
 version: '2.1'
 services:
   nginx: 
-    image: "pryvsa-docker-release.bintray.io/pryv/nginx:1.2.0"
+    image: "eu.gcr.io/pryvio/nginx:1.2.0"
     networks: 
       - frontend
     ports: 
@@ -14,7 +14,7 @@ services:
       - register
   
   dns: 
-    image: "pryvsa-docker-release.bintray.io/pryv/dns:1.2.0"
+    image: "eu.gcr.io/pryvio/dns:1.2.0"
     ports:
       - "53:5353/udp"
     networks: 
@@ -27,7 +27,7 @@ services:
       - redis
           
   register: 
-    image: "pryvsa-docker-release.bintray.io/pryv/register:1.2.0"
+    image: "eu.gcr.io/pryvio/register:1.2.0"
     networks: 
       - frontend
       - backend
@@ -38,7 +38,7 @@ services:
       - redis
 
   redis: 
-    image: "pryvsa-docker-release.bintray.io/pryv/redis:1.2.0"
+    image: "eu.gcr.io/pryvio/redis:1.2.0"
     networks: 
       - backend
     volumes: 

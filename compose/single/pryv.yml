@@ -2,7 +2,7 @@
 version: '2.1'
 services:
   nginx: 
-    image: "pryv/nginx:1.2.1"
+    image: "pryvio/nginx:1.2.1"
     networks: 
       - frontend
     ports: 
@@ -17,7 +17,7 @@ services:
       - register
       
   register: 
-    image: "pryv/register:1.2.1"
+    image: "pryvio/register:1.2.1"
     networks: 
       - frontend
       - backend
@@ -27,7 +27,7 @@ services:
       - redis
       
   dns: 
-    image: "pryv/dns:1.2.1"
+    image: "pryvio/dns:1.2.1"
     ports: 
       - "53:5353/udp"
     networks: 
@@ -37,19 +37,19 @@ services:
       - redis
       
   redis: 
-    image: "pryv/redis:1.2.1"
+    image: "pryvio/redis:1.2.1"
     networks: 
       - backend
       
   static: 
-    image: "pryv/static:1.2.1"
+    image: "pryvio/static:1.2.1"
     volumes: 
       - /home/kschiess/pilot/static/conf/:/app/conf/
     networks: 
       - frontend
   
   core: 
-    image: "pryv/core:1.2.2"
+    image: "pryvio/core:1.2.2"
     networks: 
       - frontend
       - backend
@@ -60,7 +60,7 @@ services:
       - mongodb
     
   preview: 
-    image: "pryv/preview:1.2.2"
+    image: "pryvio/preview:1.2.2"
     networks: 
       - frontend
       - backend
@@ -71,7 +71,7 @@ services:
       - mongodb
       
   mongodb: 
-    image: "pryv/mongodb"
+    image: "pryvio/mongodb"
     networks: 
       - backend
     

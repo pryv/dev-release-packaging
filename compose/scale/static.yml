@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   nginx: 
-    image: "pryvsa-docker-release.bintray.io/pryv/nginx:1.2.0"
+    image: "eu.gcr.io/pryvio/nginx:1.2.0"
     networks: 
       - frontend
     ports: 
@@ -13,7 +13,7 @@ services:
       - static
 
   static: 
-    image: "pryvsa-docker-release.bintray.io/pryv/static:1.2.0"
+    image: "eu.gcr.io/pryvio/static:1.2.0"
     volumes: 
       - ${PRYV_CONF_ROOT}/static/conf/:/app/conf/
     networks: 
