@@ -12,7 +12,14 @@ jobs:
     steps:
     - name: Download master branch
       uses: actions/checkout@v2
+
+    - name: Login to private docker registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.REGISTRY_PRYV_SERVER }}
+        username: ${{ secrets.REGISTRY_PRYV_USERNAME }}
+        password: ${{ secrets.REGISTRY_PRYV_PASSWORD }}
         
-    - name: Build and deploy
+    - name: Build and publish
       working-directory: build
       run: ./build
