@@ -14,46 +14,42 @@ if [ -e release_build ]; then
 fi
 
 function release {
-  local host='eu.gcr.io'
-  local service_name=$1
-  local version=$2
-  
-  local local_name="$service_name:$version"
-  local remote_name="$host/$service_name:$version"
+  local image=$1
   
   if [ -e ../release_build ]; then
     # Publication to registry:
-    sudo docker tag $local_name $remote_name
-    sudo docker push $remote_name
+    docker push $image
   fi
 }
 
+host='eu.gcr.io'
+
 echo "---------------------------- building base -------------------------------"
 pushd base
-sudo docker build -f Dockerfile -t pryvio/base:$version .
-release "pryvio/base" $version
+docker build -f Dockerfile -t $host/pryvio/base:$version .
+release $host/pryvio/base:$version
 popd
 
 echo "---------------------------- building mongodb ----------------------------"
 pushd mongodb
-sudo docker build -f Dockerfile -t pryvio/mongodb:$version .
-release "pryvio/mongodb" $version
+docker build -f Dockerfile -t $host/pryvio/mongodb:$version .
+release $host/pryvio/mongodb:$version
 popd
 
 echo "---------------------------- building redis ------------------------------"
 pushd redis
-sudo docker build -f Dockerfile -t pryvio/redis:$version .
-release "pryvio/redis" $version
+docker build -f Dockerfile -t $host/pryvio/redis:$version .
+release $host/pryvio/redis:$version
 popd
 
 echo "---------------------------- building nginx ------------------------------"
 pushd nginx
-sudo docker build -f Dockerfile -t pryvio/nginx:$version .
-release "pryvio/nginx" $version
+docker build -f Dockerfile -t $host/pryvio/nginx:$version .
+release $host/pryvio/nginx:$version
 popd
 
 echo "---------------------------- building ruby ------------------------------"
 pushd base_ruby
-sudo docker build -f Dockerfile -t pryvio/base_ruby:$version .
-release "pryvio/base_ruby" $version
+docker build -f Dockerfile -t $host/pryvio/base_ruby:$version .
+release $host/pryvio/base_ruby:$version
 popd
