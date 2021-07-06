@@ -22,7 +22,7 @@ run echo -n "$shasum $targz" | sha256sum -c -
 
 # Install the binaries to where they want to go
 pushd /usr/
-run tar --strip-components 1 -xzf $local_file
+run tar --strip-components 1 -xf $local_file
 
 # Cleanup
 popd
