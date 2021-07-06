@@ -1,0 +1,18 @@
+name: Pryv base images building and publishing
+
+on: 
+  push:
+    tags:
+      - '*'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download master branch
+      uses: actions/checkout@v2
+        
+    - name: Build and deploy
+      working-directory: build
+      run: ./build
