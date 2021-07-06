@@ -31,29 +31,29 @@ function release {
 echo "---------------------------- building base -------------------------------"
 pushd base
 sudo docker build -f Dockerfile -t pryvio/base:$version .
-release "pryvio/base" $version
+#release "pryvio/base" $version
 popd
 
 echo "---------------------------- building mongodb ----------------------------"
 pushd mongodb
 sudo docker build -f Dockerfile -t pryvio/mongodb:$version .
-release "pryvio/mongodb" $version
+#release "pryvio/mongodb" $version
 popd
 
 echo "---------------------------- building redis ------------------------------"
 pushd redis
 sudo docker build -f Dockerfile -t pryvio/redis:$version .
-release "pryvio/redis" $version
+#release "pryvio/redis" $version
 popd
 
 echo "---------------------------- building nginx ------------------------------"
 pushd nginx
 sudo docker build -f Dockerfile -t pryvio/nginx:$version .
-release "pryvio/nginx" $version
+#release "pryvio/nginx" $version
 popd
 
 echo "---------------------------- building ruby ------------------------------"
 pushd base_ruby
 sudo docker build -f Dockerfile -t pryvio/base_ruby:$version .
-release "pryvio/base_ruby" $version
+#release "pryvio/base_ruby" $version
 popd
