@@ -2,8 +2,8 @@
 
 set -e
 
-# Builds an up to date version of 'pryvio/base', image layer that sits below 
-# all of pryv's docker images. 
+# Builds an up to date version of 'pryvio/base', image layer that sits below
+# all of pryv's docker images.
 
 # Determine the build_tag and whether we need to release.
 scripts/build_name
@@ -15,7 +15,7 @@ fi
 
 function release {
   local image=$1
-  
+
   if [ -e ../release_build ]; then
     # Publication to registry:
     docker push $image
@@ -46,10 +46,4 @@ echo "---------------------------- building nginx ------------------------------
 pushd nginx
 docker build -f Dockerfile -t $host/pryvio/nginx:$version .
 release $host/pryvio/nginx:$version
-popd
-
-echo "---------------------------- building ruby ------------------------------"
-pushd base_ruby
-docker build -f Dockerfile -t $host/pryvio/base_ruby:$version .
-release $host/pryvio/base_ruby:$version
 popd
