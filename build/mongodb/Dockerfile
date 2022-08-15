@@ -1,4 +1,4 @@
-FROM eu.gcr.io/pryvio/base:1.7.0
+FROM eu.gcr.io/pryvio/base:1.8.0-rc1
 MAINTAINER "Tech@Pryv" <tech@pryv.com>
 
 ADD . /pd_build
@@ -8,4 +8,3 @@ RUN /pd_build/install.sh
 #   27017        mongodb port
 #
 EXPOSE 27017
-
