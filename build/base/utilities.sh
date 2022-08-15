@@ -9,3 +9,5 @@ run minimal_apt_get_install build-essential
 run minimal_apt_get_install git
 ## We need this for dist directory prep
 run minimal_apt_get_install rsync
+# Install `just` (used by our repos)
+snap install --edge --classic just
