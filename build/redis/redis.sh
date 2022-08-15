@@ -11,13 +11,13 @@ log_dir="/app/log"
 conf_dir="/app/conf"
 
 # What redis is installed?
-redis_version="5.0.2"
+redis_version="5.0.14"
 redis_file="redis-$redis_version.tar.gz"
-redis_release_sha256="937dde6164001c083e87316aa20dad2f8542af089dfcb1cbb64f9c8300cd00ed"
+redis_release_sha256="3ea5024766d983249e80d4aa9457c897a9f079957d0fb1f35682df233f997f32"
 redis_url="http://download.redis.io/releases/$redis_file"
 
 # Redis user and group
-run groupadd -r redis 
+run groupadd -r redis
 run useradd -r -g redis redis
 
 # Download and unpack, make, make install - then clean up
@@ -29,7 +29,7 @@ mkdir redis-src
 pushd redis-src
 run tar --strip-components=1 -xzf ../$redis_file
 run make && make install
-popd 
+popd
 
 run rm $redis_file
 run rm -r redis-src
