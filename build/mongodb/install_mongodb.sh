@@ -3,8 +3,8 @@ set -e
 source /pd_build/buildconfig
 
 # Versions and urls/paths
-mongo_tar_gz="mongodb-linux-x86_64-3.6.17.tgz"
-mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.17.tgz"
+mongo_tar_gz="mongodb-linux-x86_64-3.6.23.tgz"
+mongo_url="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.23.tgz"
 
 target_dir="/app/bin"
 data_dir="/app/data"
@@ -16,7 +16,7 @@ header "Install mongodb"
 mkdir -p $target_dir
 
 # Add users to the system
-run groupadd -r mongodb 
+run groupadd -r mongodb
 run useradd -r -g mongodb mongodb
 
 # Download and unpack mongodb
@@ -39,7 +39,7 @@ run mkdir -p $data_dir && chown -R mongodb:mongodb $data_dir
 run mkdir -p $log_dir && \
   touch $log_dir/mongodb.log && chown mongodb:mongodb $log_dir/mongodb.log
 
-# Copy our config file over. 
+# Copy our config file over.
 run mkdir -p $config_dir && \
   cp /pd_build/config/mongodb.conf $config_dir/
 
