@@ -2,7 +2,7 @@
 set -e
 source /pd_build/buildconfig
 
-header "NodeJs installation."
+header "Installing Node.js"
 
 ## Install Node.js
 nodeversion=v16.16.0

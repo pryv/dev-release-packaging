@@ -11,7 +11,7 @@ data_dir="/app/data"
 log_dir="/app/log"
 config_dir="/app/conf"
 
-header "Install mongodb"
+header "Installing MongoDB"
 
 mkdir -p $target_dir
 

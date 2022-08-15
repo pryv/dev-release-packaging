@@ -24,25 +24,33 @@ function release {
 
 host='eu.gcr.io'
 
-echo "---------------------------- building base -------------------------------"
+echo ""
+echo "---------------------------- BUILD IMAGE: BASE ----------------------------"
+echo ""
 pushd base
 docker build -f Dockerfile -t $host/pryvio/base:$version .
 release $host/pryvio/base:$version
 popd
 
-echo "---------------------------- building mongodb ----------------------------"
+echo ""
+echo "---------------------------- BUILD IMAGE: MONGODB -------------------------"
+echo ""
 pushd mongodb
 docker build -f Dockerfile -t $host/pryvio/mongodb:$version .
 release $host/pryvio/mongodb:$version
 popd
 
-echo "---------------------------- building redis ------------------------------"
+echo ""
+echo "---------------------------- BUILD IMAGE: REDIS ---------------------------"
+echo ""
 pushd redis
 docker build -f Dockerfile -t $host/pryvio/redis:$version .
 release $host/pryvio/redis:$version
 popd
 
-echo "---------------------------- building nginx ------------------------------"
+echo ""
+echo "---------------------------- BUILD IMAGE: NGINX ---------------------------"
+echo ""
 pushd nginx
 docker build -f Dockerfile -t $host/pryvio/nginx:$version .
 release $host/pryvio/nginx:$version

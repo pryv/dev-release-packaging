@@ -2,7 +2,7 @@
 set -e
 source /pd_build/buildconfig
 
-header "(Pre-)Configuring nginx."
+header "(Pre-)Configuring nginx"
 
 logs_dir="/app/log"
 conf_dir="/app/conf"
