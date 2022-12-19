@@ -24,6 +24,7 @@ prepare() {
 packages() {
   header "Install APT packages"
 
+  run apt_install_minimal runit
   run apt_install_minimal curl
   run apt_install_minimal ca-certificates
   # many NPM packages contain native extensions and require a compiler
