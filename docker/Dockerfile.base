@@ -1,6 +1,10 @@
 
-FROM ubuntu:20.04
+FROM phusion/baseimage:focal-1.2.0
 MAINTAINER "Tech@Pryv" <tech@pryv.com>
+
+# Note KSC, 13 Jan 17:
+# Some details of the package construction are copied verbatim from
+# the phusion passenger-docker recipe at https://github.com/phusion/passenger-docker
 
 # add build files
 COPY common-files base /pd_build/
