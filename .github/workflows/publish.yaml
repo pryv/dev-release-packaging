@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '*'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,6 +13,8 @@ jobs:
     steps:
     - name: Download master branch
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Login to private docker registry
       uses: azure/docker-login@v1
@@ -21,5 +24,5 @@ jobs:
         password: ${{ secrets.REGISTRY_PRYV_PASSWORD }}
 
     - name: Build and publish
-      working-directory: build
+      working-directory: .
       run: ./build

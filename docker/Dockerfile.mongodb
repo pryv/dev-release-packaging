@@ -1,0 +1,12 @@
+FROM eu.gcr.io/pryvio/base:1.8.0
+MAINTAINER "Tech@Pryv" <tech@pryv.com>
+
+# add build files
+COPY common-files mongodb /pd_build/
+# install
+RUN /pd_build/install.sh
+# cleanup build files
+RUN rm -rf /pd_build
+
+# expose MongoDB port
+EXPOSE 27017

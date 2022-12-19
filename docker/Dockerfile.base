@@ -1,0 +1,10 @@
+
+FROM ubuntu:20.04
+MAINTAINER "Tech@Pryv" <tech@pryv.com>
+
+# add build files
+COPY common-files base /pd_build/
+# install
+RUN /pd_build/install.sh
+# cleanup build files
+RUN rm -rf /pd_build
