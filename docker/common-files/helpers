@@ -18,25 +18,27 @@ else
   BLUE_BG=
 fi
 
-function minimal_apt_get_install()
-{
-  if [[ ! -e /var/lib/apt/lists/lock ]]; then
-  apt-get update
-  fi
-  apt-get install -y --no-install-recommends "$@"
-}
-
-function header()
-{
+function header() {
   local title="$1"
   echo ""
   echo "${BLUE_BG}${YELLOW}${BOLD}${title}${RESET}"
   echo "------------------------------------------"
 }
 
-function run()
-{
+function run() {
   echo "+ $@"
   "$@"
 }
 
+function apt_install_minimal() {
+  if [[ ! -e /var/lib/apt/lists/lock ]]; then
+  apt-get update
+  fi
+  apt-get install -y --no-install-recommends "$@"
+}
+
+function cleanup_common() {
+  run apt-get autoremove
+  run apt-get clean
+  run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+}
