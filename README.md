@@ -9,8 +9,14 @@ See the [GitHub workflow](.github/workflows/publish.yaml) for how it works.
 run `./build.sh test` to produce local images `localhost/{name}/test` 
 launch `test/start.sh` to start local containers
 
+To manually publish preview images
+run `./build.sh preview {version}`
+it will be published with `{version}-preview` tag
+
 ## Note
 Launch a container interactively: `docker run -it localhost/pryvio/mongodb:test bash`
+
+
 
 
 ## CHANGELOG
