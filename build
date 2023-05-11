@@ -30,7 +30,7 @@ do
   echo ""
   echo "---------------------------- BUILD IMAGE: $image ----------------------------"
   echo ""
-  docker build -f Dockerfile.$image --build-arg BUILD_HOST=$host --build-arg=BUILD_VERSION=$version -t $host/pryvio/$image:$version .
+  docker build -f Dockerfile.$image --build-arg BUILD_HOST=$host --build-arg BUILD_VERSION=$version -t $host/pryvio/$image:$version .
   if [ "$release" = true ]; then
     # publish to registry
     docker push $host/pryvio/$image:$version
