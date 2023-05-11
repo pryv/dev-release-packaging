@@ -4,7 +4,7 @@ source /pd_build/helpers
 
 main() {
   redis
-  configure
+  #configure
   cleanup
 }
 
@@ -58,11 +58,11 @@ redis() {
   run cp /pd_build/runit/redis /etc/service/redis/run
 }
 
-configure() {
+#configure() {
   # Remove cron and sshd entirely, unless we use them
-  run rm -r /etc/service/sshd && rm /etc/my_init.d/00_regen_ssh_host_keys.sh
-  run rm -r /etc/service/cron
-}
+  # run rm -r /etc/services/sshd && rm /etc/my_init.d/00_regen_ssh_host_keys.sh
+  # run rm -r /etc/services/cron
+#}
 
 cleanup() {
   header "Finalizing"

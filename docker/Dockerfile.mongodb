@@ -1,5 +1,7 @@
-FROM eu.gcr.io/pryvio/base:1.8.0
-MAINTAINER "Tech@Pryv" <tech@pryv.com>
+ARG BUILD_HOST
+ARG BUILD_VERSION
+FROM ${BUILD_HOST}/pryvio/base:${BUILD_VERSION}
+LABEL maintainer="Pryv tech@pryv.com>"
 
 # add build files
 COPY common-files mongodb /pd_build/

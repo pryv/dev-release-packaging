@@ -4,7 +4,6 @@ source /pd_build/helpers
 
 main() {
   mongodb
-  configure
   cleanup
 }
 
@@ -55,11 +54,6 @@ mongodb() {
     cp /pd_build/runit/mongodb /etc/service/mongodb/run
 }
 
-configure() {
-  # Remove cron and sshd entirely, unless we use them
-  run rm -r /etc/service/sshd && rm /etc/my_init.d/00_regen_ssh_host_keys.sh
-  run rm -r /etc/service/cron
-}
 
 cleanup() {
   header "Finalizing"

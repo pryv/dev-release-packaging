@@ -30,17 +30,23 @@ packages() {
   run apt_install_minimal git
   # we need this for dist directory prep
   run apt_install_minimal rsync
+   # we need this to install node
+  run apt_install_minimal curl ca-certificates 
+  # install runit
+  run apt_install_minimal runit-run
+  # install just 
+  run curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 }
 
 nodejs() {
   header "Installing Node.js"
 
-  nodeversion=v16.16.0
+  nodeversion=v18.16.0
   version=x64
   targz="node-${nodeversion}-linux-${version}.tar.xz"
   binary_url="https://nodejs.org/dist/${nodeversion}/${targz}"
   local_file="/var/spool/${targz}"
-  shasum="edcb6e9bb049ae365611aa209fc03c4bfc7e0295dbcc5b2f1e710ac70384a8ec"
+  shasum="44d93d9b4627fe5ae343012d855491d62c7381b236c347f7666a7ad070f26548"
 
   cd /var/spool
 
@@ -61,7 +67,7 @@ nodejs() {
 
 configure() {
   # disable cron
-  touch /etc/service/cron/down
+  # touch /etc/service/cron/down
 
   # remove services from our own base image that we will not use
   # (removal code here)

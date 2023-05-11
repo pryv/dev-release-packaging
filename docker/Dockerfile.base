@@ -1,14 +1,15 @@
 
-FROM phusion/baseimage:focal-1.2.0
-MAINTAINER "Tech@Pryv" <tech@pryv.com>
+FROM ubuntu:22.04
+LABEL maintainer="Pryv tech@pryv.com>"
 
-# Note KSC, 13 Jan 17:
-# Some details of the package construction are copied verbatim from
-# the phusion passenger-docker recipe at https://github.com/phusion/passenger-docker
-
+RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
+RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf.d/00-docker
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
 # add build files
 COPY common-files base /pd_build/
 # install
 RUN /pd_build/install.sh
 # cleanup build files
 RUN rm -rf /pd_build
+# cleanup package cache
+RUN rm -rf /var/lib/apt/lists/*
