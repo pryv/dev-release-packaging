@@ -9,6 +9,8 @@ COPY common-files mongodb /pd_build/
 RUN /pd_build/install.sh
 # cleanup build files
 RUN rm -rf /pd_build
+# cleanup package cache
+RUN rm -rf /var/lib/apt/lists/*
 
 # expose MongoDB port
 EXPOSE 27017
