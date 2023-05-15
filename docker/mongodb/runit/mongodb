@@ -13,4 +13,4 @@ chown -R mongodb:mongodb $data_dir
 touch $log_dir/mongodb.log && chown -R mongodb:mongodb $log_dir
 
 cd /app/bin/mongodb
-exec chpst -u mongodb bin/mongod --config /app/conf/mongodb.yml
+exec chpst -u mongodb bin/mongod --config $config_dir/mongodb.yml

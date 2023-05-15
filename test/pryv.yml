@@ -1,6 +1,5 @@
 version: '3.5'
 services:
-
   mongodb:
     image: "localhost/pryvio/mongodb:test"
     container_name: pryvio_mongodb
@@ -12,9 +11,6 @@ services:
       - ${PRYV_CONF_ROOT}/pryv/mongodb/log/:/app/log/
       - ${PRYV_CONF_ROOT}/pryv/mongodb/backup/:/app/backup/
     restart: always
-
-
-
 networks:
   frontend:
     driver: bridge

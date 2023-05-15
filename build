@@ -6,7 +6,7 @@ set -e
 if [ "$1" == "preview" ]
 then
   if [ -z "$2" ]; then
-    echo "preview requiers a TAG for the version"
+    echo "preview requires a tag argument for the version"
     exit 0
   fi
   version=$2"-preview"
@@ -15,24 +15,20 @@ then
   release=true
 elif [ "$1" != "test" ]
 then
+  # Determine build tag and release status from git working copy
+  ./check-git
+  version=$(cat build_tag)
+  if [ -e release_build ]; then
+    release=true
+    echo "This is a release build: it will be published to the Docker registry"
+  fi
 
-# Determine build tag and release status from git working copy
-./check-git
-version=$(cat build_tag)
-if [ -e release_build ]; then
-  release=true
-  echo "This is a release build: it will be published to the Docker registry"
+  host='eu.gcr.io'
+else ## test
+  version=test
+  host=localhost
+  release=false
 fi
-
-host='eu.gcr.io'
-
-else ## test 
-
-host=localhost
-release=false
-version=test
-
-fi ## end test
 
 cd docker
 for image in base mongodb redis nginx

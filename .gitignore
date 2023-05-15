@@ -1,3 +1,4 @@
-tests/pryv/*/data
 .DS_Store
-tests/pryv/*/log
+test/pryv/*/backup
+test/pryv/*/data
+test/pryv/*/log

@@ -31,10 +31,10 @@ packages() {
   # we need this for dist directory prep
   run apt_install_minimal rsync
    # we need this to install node
-  run apt_install_minimal curl ca-certificates 
+  run apt_install_minimal curl ca-certificates
   # install runit
   run apt_install_minimal runit-run
-  # install just 
+  # install just
   run curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 }
 
@@ -66,9 +66,6 @@ nodejs() {
 }
 
 configure() {
-  # disable cron
-  # touch /etc/service/cron/down
-
   # remove services from our own base image that we will not use
   # (removal code here)
 

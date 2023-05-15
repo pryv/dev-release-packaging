@@ -4,20 +4,26 @@ Base Docker images used for packaging Pryv.io components.
 
 See the [GitHub workflow](.github/workflows/publish.yaml) for how it works.
 
-## May 2023 -- Adding "test" build capabilities
+## Local usage
 
-run `./build.sh test` to produce local images `localhost/{name}/test` 
-launch `test/start.sh` to start local containers
+Prerequisites:
+- Docker
+- [just](https://github.com/casey/just#installation)
 
-To manually publish preview images
-run `./build.sh preview {version}`
-it will be published with `{version}-preview` tag
+Then:
+- `just release-preview <version>` to publish preview images with `<version>-preview` tag
+- `just test-build` to build local test images
+- `just test-start` to start local containers
 
-## Note
-Launch a container interactively: `docker run -it localhost/pryvio/mongodb:test bash`
+See `justfile` for the details.
 
+### Note
 
+To launch a container (here `mongodb`) interactively: `docker run -it localhost/pryvio/mongodb:test bash`
 
 
 ## CHANGELOG
-- May 2023 - switching to unbuntu:22:04 base image
+
+### 2023-05
+- Use Ubuntu (22.04) instead of Phusion base image
+- Add local usage: preview and test
