@@ -1,7 +1,7 @@
 ARG BUILD_HOST
 ARG BUILD_VERSION
 FROM ${BUILD_HOST}/pryvio/base:${BUILD_VERSION}
-LABEL maintainer="Pryv tech@pryv.com>"
+LABEL maintainer="Pryv<tech@pryv.com>"
 
 # add build files
 COPY common-files mongodb /pd_build/

@@ -1,6 +1,6 @@
 
 FROM ubuntu:22.04
-LABEL maintainer="Pryv tech@pryv.com>"
+LABEL maintainer="Pryv<tech@pryv.com>"
 
 RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
 RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf.d/00-docker
