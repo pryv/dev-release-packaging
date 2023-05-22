@@ -34,8 +34,8 @@ packages() {
   run apt_install_minimal curl ca-certificates
   # install runit
   run apt_install_minimal runit-run
-  # install just
-  run curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+  # don't install `just`: for now, packages install is done externally in GH workflow
+  # run curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
 }
 
 nodejs() {
