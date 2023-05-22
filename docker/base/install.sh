@@ -24,6 +24,7 @@ prepare() {
 packages() {
   header "Install APT packages"
 
+  run apt-get update
   # many NPM packages contain native extensions and require a compiler
   run apt_install_minimal build-essential
   # bundler has to be able to pull dependencies from git

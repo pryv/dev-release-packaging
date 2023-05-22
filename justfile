@@ -15,4 +15,4 @@ test-start:
     mkdir -p test/pryv/mongodb/backup
     mkdir -p test/pryv/mongodb/log
     mkdir -p test/pryv/mongodb/data
-    docker-compose -f test/pryv.yml up
+    PRYV_CONF_ROOT={{justfile_directory()}}/test docker-compose -f test/pryv.yml up
