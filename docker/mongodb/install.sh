@@ -8,21 +8,17 @@ main() {
 }
 
 mongodb() {
-  # Versions and urls/paths
+  # Versions and URLs/paths
   mongo_tar_gz="mongodb-linux-x86_64-ubuntu2204-v6.0-latest.tgz"
   mongo_url="https://fastdl.mongodb.org/linux/"${mongo_tar_gz}
 
   mongotools_tar_gz="mongodb-database-tools-ubuntu2204-x86_64-100.7.0.tgz"
   mongotools_url="https://fastdl.mongodb.org/tools/db/"${mongotools_tar_gz}
 
-
   mongoshell_tar_gz="mongosh-1.8.2-linux-x64.tgz"
   mongoshell_url="https://downloads.mongodb.com/compass/"${mongoshell_tar_gz}
 
   target_dir="/app/bin"
-  #data_dir="/app/data"
-  #log_dir="/app/log"
-  #config_dir="/app/conf"
 
   header "Installing MongoDB"
 
@@ -51,16 +47,8 @@ mongodb() {
   run rm $mongo_tar_gz
   popd
 
-  # Create mongodb data dirs
-  run mkdir -p $data_dir && chown -R mongodb:mongodb $data_dir
-
-  # And the log file
- # run mkdir -p $log_dir && \
-  #  touch $log_dir/mongodb.log && chown mongodb:mongodb $log_dir/mongodb.log
-
-  # Copy our config file over.
-  #run mkdir -p $config_dir && \
-   # cp /pd_build/config/mongodb.yml $config_dir/
+  # config, data, log and backup directories are mapped as Docker volumes
+  # so don't need to be created here (see the runit file for their respective paths)
 
   # Have mongodb start on container start
   run mkdir /etc/service/mongodb && \

@@ -4,18 +4,13 @@ source /pd_build/helpers
 
 main() {
   redis
-  #configure
   cleanup
 }
 
 redis() {
   header "Installing Redis"
 
-  # Inspired by https://github.com/docker-library/redis.
-
-  data_dir="/app/data"
-  log_dir="/app/log"
-  conf_dir="/app/conf"
+  # Inspired by https://github.com/docker-library/redis
 
   # What redis is installed?
   redis_version="5.0.14"
@@ -42,27 +37,13 @@ redis() {
   run rm -r redis-src
   popd
 
-  # Create redis data directory
-  run mkdir -p $data_dir
-  run chown redis:redis $data_dir
+  # config, data, log and backup directories are mapped as Docker volumes
+  # so don't need to be created here (see the runit file for their respective paths)
 
-  # Copy redis configuration
-  run mkdir -p $conf_dir
-  run cp /pd_build/config/redis.conf $conf_dir/
-  run mkdir -p $log_dir && \
-    touch $log_dir/redis.log && \
-    chown redis:redis $log_dir/redis.log
-
-  # Copy redis start script
-  mkdir /etc/service/redis
-  run cp /pd_build/runit/redis /etc/service/redis/run
+  # Have redis start on container start
+  run mkdir /etc/service/redis && \
+    cp /pd_build/runit/redis /etc/service/redis/run
 }
-
-#configure() {
-  # Remove cron and sshd entirely, unless we use them
-  # run rm -r /etc/services/sshd && rm /etc/my_init.d/00_regen_ssh_host_keys.sh
-  # run rm -r /etc/services/cron
-#}
 
 cleanup() {
   header "Finalizing"
