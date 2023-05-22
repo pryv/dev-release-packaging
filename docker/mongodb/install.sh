@@ -50,9 +50,9 @@ mongodb() {
   # config, data, log and backup directories are mapped as Docker volumes
   # so don't need to be created here (see the runit file for their respective paths)
 
-  # Have mongodb start on container start
+  # Add service for runit to run on container start
   run mkdir /etc/service/mongodb && \
-    cp /pd_build/runit/mongodb /etc/service/mongodb/run
+    cp /pd_build/runit/run /etc/service/mongodb/run
 }
 
 

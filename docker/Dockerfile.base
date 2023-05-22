@@ -14,5 +14,5 @@ RUN /pd_build/install.sh
 RUN rm -rf /pd_build
 # cleanup package cache
 RUN rm -rf /var/lib/apt/lists/*
-# start runit
+# start runit, i.e. run services defined by the directories in `/etc/service`
 CMD ["runsvdir", "/etc/service"]

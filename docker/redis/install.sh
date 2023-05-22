@@ -40,9 +40,9 @@ redis() {
   # config, data, log and backup directories are mapped as Docker volumes
   # so don't need to be created here (see the runit file for their respective paths)
 
-  # Have redis start on container start
+  # Add service for runit to run on container start
   run mkdir /etc/service/redis && \
-    cp /pd_build/runit/redis /etc/service/redis/run
+    cp /pd_build/runit/run /etc/service/redis/run
 }
 
 cleanup() {
