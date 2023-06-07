@@ -1,5 +1,5 @@
 FROM nginx:1.23.1
-MAINTAINER "Tech@Pryv" <tech@pryv.com>
+LABEL maintainer="Pryv<tech@pryv.com>"
 
 # add build files
 COPY common-files nginx /pd_build/

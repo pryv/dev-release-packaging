@@ -10,21 +10,10 @@ main() {
 configure() {
   header "(Pre-)Configuring nginx"
 
-  logs_dir="/app/log"
-  conf_dir="/app/conf"
+  # config and log directories are mapped as Docker volumes
+  # so don't need to be created here (see the runit file for their respective paths)
 
-  # Create relevant directories.
-  run mkdir -p $logs_dir
-  run mkdir -p $conf_dir
-
-  # Copy configuration template
-  run cp /pd_build/conf/nginx.conf /app/conf/
-  run cp /pd_build/conf/site.conf /app/conf/
-
-  # Copy rec.la keys for Pilot configuration variant
-  run cp -r /pd_build/conf/secret /app/conf/
-
-  # And delegate configuration to our default templates below /app/conf
+  # Delegate configuration to our default templates below /app/conf
   run cp /pd_build/conf/delegate.conf /etc/nginx/nginx.conf
 }
 

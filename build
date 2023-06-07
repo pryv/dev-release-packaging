@@ -3,15 +3,32 @@ set -e
 
 # Builds the `pryvio/base` Docker image and others.
 
-# Determine build tag and release status from git working copy
-./check-git
-version=$(cat build_tag)
-if [ -e release_build ]; then
+if [ "$1" == "preview" ]
+then
+  if [ -z "$2" ]; then
+    echo "preview requires a tag argument for the version"
+    exit 0
+  fi
+  version=$2"-preview"
+  echo "This is a preview build: it will be published to the Docker registry with tag: ${version}"
+  host='eu.gcr.io'
   release=true
-  echo "This is a release build: it will be published to the Docker registry"
-fi
+elif [ "$1" != "test" ]
+then
+  # Determine build tag and release status from git working copy
+  ./check-git
+  version=$(cat build_tag)
+  if [ -e release_build ]; then
+    release=true
+    echo "This is a release build: it will be published to the Docker registry"
+  fi
 
-host='eu.gcr.io'
+  host='eu.gcr.io'
+else ## test
+  version=test
+  host=localhost
+  release=false
+fi
 
 cd docker
 for image in base mongodb redis nginx
@@ -19,7 +36,7 @@ do
   echo ""
   echo "---------------------------- BUILD IMAGE: $image ----------------------------"
   echo ""
-  docker build -f Dockerfile.$image -t $host/pryvio/$image:$version .
+  docker build -f Dockerfile.$image --build-arg BUILD_HOST=$host --build-arg BUILD_VERSION=$version -t $host/pryvio/$image:$version .
   if [ "$release" = true ]; then
     # publish to registry
     docker push $host/pryvio/$image:$version
