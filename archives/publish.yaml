@@ -1,3 +1,4 @@
+## Archived .github/workflows/ used to publish images on azure to be updated for DockerHub
 name: Pryv base images building and publishing
 
 on:

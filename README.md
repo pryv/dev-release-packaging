@@ -2,7 +2,11 @@
 
 Base Docker images used for packaging Pryv.io components.
 
-See the [GitHub workflow](.github/workflows/publish.yaml) for how it works.
+Run `./build` to build an publish image
+
+## Todo 
+
+Previous publishing was done one Azure... now that Pryv.io is fully open source, the archives workflow `archives/publish.yaml` should be updated for DockerHub
 
 ## Local usage
 

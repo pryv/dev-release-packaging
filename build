@@ -11,7 +11,7 @@ then
   fi
   version=$2"-preview"
   echo "This is a preview build: it will be published to the Docker registry with tag: ${version}"
-  host='eu.gcr.io'
+  host='docker.io'
   release=true
 elif [ "$1" != "test" ]
 then
@@ -23,7 +23,7 @@ then
     echo "This is a release build: it will be published to the Docker registry"
   fi
 
-  host='eu.gcr.io'
+  host='docker.io'
 else ## test
   version=test
   host=localhost
